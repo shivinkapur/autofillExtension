@@ -1,0 +1,22 @@
+// ref. http://dev.screw-axis.com/doc/chrome_extensions/tutorials/getting_started/
+{
+  "name": "Autofill chrome extension",
+  "version": "1.0",
+  "manifest_version": 2,
+
+  "description": "This chrome extension fills out forms automatically.",
+  "icons": {},
+  "content_scripts": [
+    {
+      "matches" : [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": ["jquery-1.8.2.min.js", "run.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "options_page": "options.html",
+  "background": { "page": "background.html" },
+  "content_security_policy": "script-src 'self' https://cdn.firebase.com https://cardmill.firebaseio.com; object-src 'self'"
+}
