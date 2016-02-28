@@ -2,7 +2,7 @@
 // ref. http://d.hatena.ne.jp/umezo/20091115/1258291572
 var core = {
   /**
-   * 
+   *
    * @return Object
    */
   "getOptions": function(){
@@ -22,5 +22,11 @@ window.onload = function(){
   chrome.extension.onRequest.addListener(function(request, sender, sendResponse){
     var ret = (core[request.action] || function(){}).apply(this, request.args);
     sendResponse(ret);
+  });
+
+  chrome.extension.onMessage.addListener(
+  function(request, sender, sendResponse) {
+  	chrome.pageAction.show(sender.tab.id);
+    sendResponse();
   });
 }
