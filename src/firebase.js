@@ -10,4 +10,8 @@ jQuery(function($){
       zip: 94103
     }
   });
+
+  myFirebaseRef.on('value', function(data) {
+    alert(data);
+  })
 });
